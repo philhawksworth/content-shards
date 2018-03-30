@@ -1,8 +1,8 @@
 ---
 title: A docs page
 date: 2018-03-21
-layout: "layouts/doc.md",
-tags: "docs",
+layout: "layouts/doc.md"
+tags: "docs"
 templateEngineOverride: "njk,md"
 ---
 

@@ -1,8 +1,8 @@
 ---
 title: A news page
 date: 2018-03-21
-layout: "layouts/news.md",
-tags: "news",
+layout: "layouts/news.md"
+tags: "news"
 templateEngineOverride: "njk,md"
 ---
 
