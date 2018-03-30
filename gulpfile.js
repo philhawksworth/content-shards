@@ -55,8 +55,9 @@ gulp.task("scss", function () {
 /*
  Run our static site generator to build the pages
 */
-gulp.task('generate', shell.task('eleventy --config=eleventy.js'));
+gulp.task('generate:site', shell.task('eleventy --config=eleventy.js'));
 gulp.task('generate:docs', shell.task('eleventy --config=eleventy.docs.js'));
+gulp.task('generate:news', shell.task('eleventy --config=eleventy.news.js'));
 
 
 
@@ -64,7 +65,11 @@ gulp.task('generate:docs', shell.task('eleventy --config=eleventy.docs.js'));
  Manage things in and out of the build cache
 */
 gulp.task('stash:docs', shell.task(`mkdir -p ${cache} && cp -R ${buildDest}/docs ${cache}`));
+gulp.task('stash:news', shell.task(`mkdir -p ${cache} && cp -R ${buildDest}/news ${cache}`));
+gulp.task('stash:site', shell.task(`mkdir -p ${cache} && cp -R ${buildDest}/ ${cache}`));
 gulp.task('fetch:docs', shell.task(`mkdir -p ${buildDest} && cp -R ${cache}/docs ${buildDest}`));
+gulp.task('fetch:news', shell.task(`mkdir -p ${buildDest} && cp -R ${cache}/news ${buildDest}`));
+gulp.task('fetch:site', shell.task(`mkdir -p ${buildDest} && cp -R ${cache} ${buildDest}`));
 
 
 
@@ -90,13 +95,38 @@ gulp.task('build:docs', function(callback) {
 });
 
 
+/*
+  Build the docs section, put it in the cache, and populate a deploy from the cache
+*/
+gulp.task('build:news', function(callback) {
+  runSequence(
+    ['generate:news'],
+    ['stash:news'],
+    ['build:cache'],
+    callback
+  );
+});
+
+
+/*
+  Build the docs section, put it in the cache, and populate a deploy from the cache
+*/
+gulp.task('build:site', function(callback) {
+  runSequence(
+    ['generate:site'],
+    ['stash:site','scss'],
+    callback
+  );
+});
+
+
 
 /*
   Let's build this sucker. Mostly from the cached assets
 */
 gulp.task('build:cache', function(callback) {
   runSequence(
-    ['fetch:docs'],
+    ['fetch:site'],
     ['scss'],
     callback
   );

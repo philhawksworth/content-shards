@@ -1,6 +1,6 @@
 ---
 layout: layouts/base.njk
-pageClass: posts
+pageClass: news
 templateEngineOverride: njk, md
 ---
 
@@ -12,7 +12,7 @@ templateEngineOverride: njk, md
   {{ content | safe }}
   <div class="footnote">
     <p>
-      This page is part of the posts section.
+      This page is part of the news section.
     </p>
   </div>
 </main>

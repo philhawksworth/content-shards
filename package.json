@@ -8,7 +8,8 @@
     "start": "yarn run build && yarn run serve",
     "build": "gulp build && yarn run build:functions",
     "build:docs": "gulp build:docs",
-    "build:cache": "gulp build:cache",
+    "build:news": "gulp build:news",
+    "build:site": "gulp build:site && yarn run build:functions",
     "build:functions": "netlify-lambda build src/lambda",
     "serve": "gulp watch & gulp serve & netlify-lambda serve src/lambda"
   },
