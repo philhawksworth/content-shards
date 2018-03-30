@@ -29,6 +29,8 @@ gulp.task('serve', serve({
 
 
 
+
+
 // Compile SCSS files to CSS
 gulp.task("scss", function () {
   gulp.src(buildSrc + "/scss/main.scss")
@@ -44,7 +46,15 @@ gulp.task("scss", function () {
  Run our static site generator to build the pages
 */
 gulp.task('generate', shell.task('eleventy --config=eleventy.js'));
+gulp.task('generate:docs', shell.task('eleventy --config=eleventy.docs.js'));
 
+
+
+/*
+ Manage things in and out of the build cache
+*/
+gulp.task('stash:docs', shell.task(`cp -R ${buildDest}/docs ${cache}/docs`));
+gulp.task('fetch:docs', shell.task(`mkdir -p ${buildDest} && cp -R ${cache}/docs ${buildDest}`));
 
 
 
@@ -58,12 +68,26 @@ gulp.task("watch", function () {
 
 
 /*
-  Let's build this sucker.
+  Build the docs section, put it in the cache, and populate a deploy from the cache
 */
-gulp.task('build', function(callback) {
+gulp.task('build:docs', function(callback) {
   runSequence(
-    ['clean-build'],
-    ['generate', 'scss'],
+    ['generate:docs'],
+    ['stash:docs'],
+    ['build:cache'],
+    callback
+  );
+});
+
+
+
+/*
+  Let's build this sucker. Mostly from the cached assets
+*/
+gulp.task('build:cache', function(callback) {
+  runSequence(
+    ['fetch:docs']
+    ['scss'],
     callback
   );
 });

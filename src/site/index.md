@@ -23,7 +23,7 @@ From this point we should already have:
 The pages found in in the posts
 
 <ul class="listing">
-{%- for page in collections.post -%}
+{%- for page in collections.news -%}
   <li>
     <a href="{{ page.url }}">{{ page.data.title }}</a> -
     <time datetime="{{ page.date }}">{{ page.date | dateDisplay }}</time>
