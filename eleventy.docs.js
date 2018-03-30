@@ -8,7 +8,7 @@ module.exports = function(config) {
     dir: {
       input: "src/site/docs",
       output: "dist/docs",
-      includes: "_includes"
+      includes: "../_includes"
     },
     templateFormats : ["njk", "md"],
     htmlTemplateEngine : "njk",

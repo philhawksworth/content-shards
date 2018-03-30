@@ -11,6 +11,16 @@ var runSequence = require('run-sequence');
 */
 var buildSrc = "src";
 var buildDest = "dist";
+var localCache = "cache";
+var prodCache = " /opt/build/cache/test-shard";
+var cache;
+
+// automatically set the correct path for our cache manipulations
+if(process.env.URL) {
+  cache = prodCache;
+} else {
+  cache = localCache;
+}
 
 
 
@@ -53,7 +63,7 @@ gulp.task('generate:docs', shell.task('eleventy --config=eleventy.docs.js'));
 /*
  Manage things in and out of the build cache
 */
-gulp.task('stash:docs', shell.task(`cp -R ${buildDest}/docs ${cache}/docs`));
+gulp.task('stash:docs', shell.task(`mkdir -p ${cache} && cp -R ${buildDest}/docs ${cache}`));
 gulp.task('fetch:docs', shell.task(`mkdir -p ${buildDest} && cp -R ${cache}/docs ${buildDest}`));
 
 
@@ -86,7 +96,7 @@ gulp.task('build:docs', function(callback) {
 */
 gulp.task('build:cache', function(callback) {
   runSequence(
-    ['fetch:docs']
+    ['fetch:docs'],
     ['scss'],
     callback
   );
