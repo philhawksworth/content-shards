@@ -4,6 +4,7 @@ date: 2018-03-28
 layout: "layouts/doc.md"
 tags: "docs"
 templateEngineOverride: "njk,md"
+permalink: /docs/{{ title | slug }}/index.html
 ---
 
 ## Another simple docs page.

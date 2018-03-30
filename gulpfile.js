@@ -68,7 +68,7 @@ gulp.task('stash:docs', shell.task(`mkdir -p ${cache} && cp -R ${buildDest}/docs
 gulp.task('stash:news', shell.task(`mkdir -p ${cache} && cp -R ${buildDest}/news ${cache}`));
 gulp.task('stash:site', shell.task(`mkdir -p ${cache} && cp -R ${buildDest}/* ${cache}`));
 gulp.task('fetch:site', shell.task(`mkdir -p ${buildDest} && cp -R ${cache}/* ${buildDest}`));
-gulp.task('purge', shell.task(`rm -rf ${cache}`));
+gulp.task('purge', shell.task(`rm -rf ${cache}`)); //scary
 
 
 
@@ -88,7 +88,7 @@ gulp.task('build:docs', function(callback) {
   runSequence(
     ['generate:docs'],
     ['stash:docs'],
-    ['build:cache'],
+    ['build:cached'],
     callback
   );
 });
@@ -101,7 +101,7 @@ gulp.task('build:news', function(callback) {
   runSequence(
     ['generate:news'],
     ['stash:news'],
-    ['build:cache'],
+    ['build:cached'],
     callback
   );
 });
@@ -124,7 +124,7 @@ gulp.task('build:site', function(callback) {
 /*
   Let's build this sucker. Mostly from the cached assets
 */
-gulp.task('build:cache', function(callback) {
+gulp.task('build:cached', function(callback) {
   runSequence(
     ['fetch:site'],
     ['scss'],

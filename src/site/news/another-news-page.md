@@ -4,6 +4,7 @@ date: 2018-03-28
 layout: "layouts/news.md"
 tags: "news"
 templateEngineOverride: "njk,md"
+permalink: /news/{{ title | slug }}/index.html
 ---
 
 ## Another simple news page.
