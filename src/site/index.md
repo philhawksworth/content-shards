@@ -18,18 +18,6 @@ From this point we should already have:
 - Serverless (FaaS) [development pipeline](http://127.0.0.1:9000/hello?foo=1&bar=2) with Netlify Functions for Lambda
 
 
-## Post pages
-
-The pages found in in the posts
-
-<ul class="listing">
-{%- for page in collections.news -%}
-  <li>
-    <a href="{{ page.url }}">{{ page.data.title }}</a> -
-    <time datetime="{{ page.date }}">{{ page.date | dateDisplay }}</time>
-  </li>
-{%- endfor -%}
-</ul>
 
 
 
