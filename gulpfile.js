@@ -11,7 +11,7 @@ var runSequence = require('run-sequence');
 */
 var buildSrc = "src";
 var buildDest = "dist";
-var localCache = "cache";
+var localCache = "cache/test-shard";
 var prodCache = " /opt/build/cache/test-shard";
 var cache;
 
@@ -66,10 +66,11 @@ gulp.task('generate:news', shell.task('eleventy --config=eleventy.news.js'));
 */
 gulp.task('stash:docs', shell.task(`mkdir -p ${cache} && cp -R ${buildDest}/docs ${cache}`));
 gulp.task('stash:news', shell.task(`mkdir -p ${cache} && cp -R ${buildDest}/news ${cache}`));
-gulp.task('stash:site', shell.task(`mkdir -p ${cache} && cp -R ${buildDest} ${cache}`));
+gulp.task('stash:site', shell.task(`mkdir -p ${cache} && cp -R ${buildDest}/ ${cache}`));
 gulp.task('fetch:docs', shell.task(`mkdir -p ${buildDest} && cp -R ${cache}/docs ${buildDest}`));
 gulp.task('fetch:news', shell.task(`mkdir -p ${buildDest} && cp -R ${cache}/news ${buildDest}`));
-gulp.task('fetch:site', shell.task(`mkdir -p ${buildDest} && cp -R ${cache}/* ${buildDest}`));
+gulp.task('fetch:site', shell.task(`mkdir -p ${buildDest} && cp -R ${cache}/ ${buildDest}`));
+gulp.task('purge', shell.task(`rm -rf ${cache}`));
 
 
 
@@ -113,6 +114,7 @@ gulp.task('build:news', function(callback) {
 */
 gulp.task('build:site', function(callback) {
   runSequence(
+    ['purge'],
     ['generate:site'],
     ['stash:site','scss'],
     callback
