@@ -41,7 +41,9 @@ gulp.task('serve', serve({
 
 
 
-// Compile SCSS files to CSS
+/*
+  Compile SCSS files to CSS
+*/
 gulp.task("scss", function () {
   gulp.src(buildSrc + "/scss/main.scss")
     .pipe(sass({
@@ -55,9 +57,17 @@ gulp.task("scss", function () {
 /*
  Run our static site generator to build the pages
 */
-gulp.task('generate:site', shell.task('eleventy --config=eleventy.js'));
-gulp.task('generate:docs', shell.task('eleventy --config=eleventy.docs.js'));
-gulp.task('generate:news', shell.task('eleventy --config=eleventy.news.js'));
+gulp.task('generate:site', ['exclude:none'], shell.task('eleventy --config=eleventy.js'));
+gulp.task('generate:docs', ['exclude:news'], shell.task('eleventy --config=eleventy.js'));
+gulp.task('generate:news', ['exclude:docs'], shell.task('eleventy --config=eleventy.js'));
+
+/*
+  Setup with eleventy which directories it should exclude in from the generation
+*/
+gulp.task('exclude:docs', shell.task('cp src/site/.eleventyignore.docs src/site/.eleventyignore'));
+gulp.task('exclude:news', shell.task('cp src/site/.eleventyignore.news src/site/.eleventyignore'));
+gulp.task('exclude:none', shell.task('echo "" > src/site/.eleventyignore'));
+
 
 
 
@@ -76,7 +86,7 @@ gulp.task('purge', shell.task(`rm -rf ${cache}`)); //scary
   Watch src folder for changes
 */
 gulp.task("watch", function () {
-  gulp.watch(buildSrc + "/**/*", ["build"])
+  gulp.watch(buildSrc + "/**/*", ["build:site"])
 });
 
 

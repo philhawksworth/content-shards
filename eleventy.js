@@ -10,9 +10,7 @@ module.exports = function(config) {
       output: "dist",
       includes: "_includes"
     },
-    templateFormats : ["njk", "md"],
-    htmlTemplateEngine : "njk",
-    markdownTemplateEngine : "njk"
+    templateFormats : ["njk", "md"]
   };
 
 };

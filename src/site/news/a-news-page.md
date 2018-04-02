@@ -1,10 +1,6 @@
 ---
 title: A news page
 date: 2018-03-21
-layout: "layouts/news.md"
-tags: "news"
-templateEngineOverride: "njk,md"
-permalink: /news/{{ title | slug }}/index.html
 ---
 
 ## There's not much here in the sample news page. Better get to work.

@@ -1,10 +1,6 @@
 ---
 title: A docs page
 date: 2018-03-21
-layout: "layouts/doc.md"
-tags: "docs"
-templateEngineOverride: "njk,md"
-permalink: /docs/{{ title | slug }}/index.html
 ---
 
 ## There's not much here in the sample post page. Better get to work.

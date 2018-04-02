@@ -6,19 +6,20 @@
   "license": "MIT",
   "scripts": {
     "start": "yarn run build && yarn run serve",
-    "build": "gulp build && yarn run build:functions",
+    "build": "gulp build:site && yarn run build:functions",
     "build:docs": "gulp build:docs",
     "build:news": "gulp build:news",
     "build:site": "gulp build:site && yarn run build:functions",
     "build:functions": "netlify-lambda build src/lambda",
-    "serve": "gulp watch & gulp serve & netlify-lambda serve src/lambda"
+    "serve": "gulp watch & gulp serve & netlify-lambda serve src/lambda",
+    "v": "gulp version"
   },
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/philhawksworth"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/philhawksworth"
   },
   "dependencies": {
-    "@11ty/eleventy": "^0.3.0",
+    "@11ty/eleventy": "^0.3.1",
     "gravatar": "^1.6.0",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.4.0",
@@ -29,4 +30,3 @@
     "run-sequence": "^2.2.1"
   }
 }
-
