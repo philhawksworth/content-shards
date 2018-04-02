@@ -70,7 +70,7 @@ gulp.task('purge', shell.task(`rm -rf ${cache}`)); //scary
 
 
 /*
-  Watch src folder for changes
+  Watch src folder for changes during local dev
 */
 gulp.task("watch", function () {
   gulp.watch(buildSrc + "/**/*", ["build:site"])

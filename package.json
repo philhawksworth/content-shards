@@ -1,7 +1,7 @@
 {
-  "name": "Content Shards",
+  "name": "ContentShards",
   "version": "1.0.0",
-  "description": "An proof of concept site exploring how to rebuild only part of a site and cache other parts between builds on Netlify.",
+  "description": "A proof of concept site exploring how to rebuild only part of a site and cache other parts between builds on Netlify",
   "author": "Phil Hawksworth",
   "license": "MIT",
   "scripts": {

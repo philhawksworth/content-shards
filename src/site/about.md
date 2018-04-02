@@ -1,13 +1,13 @@
 ---
-title: EleventyOne - A starting point
+title: Content shards - get your own
 layout: layouts/base.njk
 ---
 
 # Get yours
 
-To get your own instance of this [11ty](https://11ty.io) starter project cloned and deploying to [Netlify](https://www.netlify.com) very quickly, just click the button below and follow the instructions.
+To get your own instance of this site cloned and deploying to [Netlify](https://www.netlify.com) very quickly, just click the button below and follow the instructions.
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/philhawksworth/twavatar)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository={{ pkg.repository.url }})
 
 
 ## Wait, what happens when I click that button?

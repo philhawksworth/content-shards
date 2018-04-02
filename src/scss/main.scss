@@ -22,10 +22,11 @@ html {
 
 body {
   text-align: center;
-  background-color: $page-color;
+  // background-color: $page-color;
   color: mix($text-color, $page-color, 70%);
-  // background: radial-gradient(ellipse at center,  10%,$page-color mix($page-color, $text-color, 90%)  100%);
-  // background-attachment: fixed;
+  background: radial-gradient(ellipse at center, $page-color 70%, mix($page-color, $text-color, 70%) 150%);
+  background-attachment: fixed;
+  min-height: 100vh;
   font-family: sans-serif;
   font-weight: 30;
   font-size: 16px;
@@ -140,6 +141,14 @@ a:focus {
   }
 }
 
+
+.meta {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  font-size: 0.8em;
+  font-style: italic;
+  color: mix($accent-color, $page-color, 60%);
+}
 
 pre {
   margin-top: 2em;
