@@ -1,32 +1,27 @@
 {
-  "name": "EleventyOne",
+  "name": "Content Shards",
   "version": "1.0.0",
-  "description": "A project bootstrap for Eleventy sites. With pipelines for Sass, Js, and Lambdas",
+  "description": "An proof of concept site exploring how to rebuild only part of a site and cache other parts between builds on Netlify.",
   "author": "Phil Hawksworth",
   "license": "MIT",
   "scripts": {
-    "start": "yarn run build && yarn run serve",
-    "build": "gulp build:site && yarn run build:functions",
+    "start": "yarn run build:site && yarn run serve",
     "build:docs": "gulp build:docs",
     "build:news": "gulp build:news",
-    "build:site": "gulp build:site && yarn run build:functions",
-    "build:functions": "netlify-lambda build src/lambda",
-    "serve": "gulp watch & gulp serve & netlify-lambda serve src/lambda",
-    "v": "gulp version"
+    "build:site": "gulp build:site",
+    "serve": "gulp watch & gulp serve"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/philhawksworth"
+    "url": "https://github.com/philhawksworth/content-shards"
   },
   "dependencies": {
     "@11ty/eleventy": "^0.3.0",
     "gravatar": "^1.6.0",
     "gulp": "^3.9.1",
-    "gulp-clean": "^0.4.0",
     "gulp-sass": "^3.1.0",
     "gulp-serve": "^1.4.0",
     "gulp-shell": "^0.6.5",
-    "netlify-lambda": "^0.2.0",
     "run-sequence": "^2.2.1"
   }
 }

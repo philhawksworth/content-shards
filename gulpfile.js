@@ -2,7 +2,6 @@ var gulp        = require("gulp");
 var sass        = require("gulp-sass");
 var serve       = require('gulp-serve');
 var shell       = require('gulp-shell');
-var clean       = require('gulp-clean');
 var runSequence = require('run-sequence');
 
 
@@ -23,22 +22,13 @@ if(process.env.URL) {
 }
 
 
-
-// cleanup the build output
-gulp.task('clean-build', function () {
-  return gulp.src(buildDest, {read: false})
-    .pipe(clean());
-});
-
-
-// local webserver for development
+/*
+  local webserver for development
+*/
 gulp.task('serve', serve({
   root: [buildDest],
   port: 8008,
 }));
-
-
-
 
 
 /*
@@ -53,7 +43,6 @@ gulp.task("scss", function () {
 });
 
 
-
 /*
  Run our static site generator to build the pages
 */
@@ -61,14 +50,13 @@ gulp.task('generate:site', ['exclude:none'], shell.task('eleventy --config=eleve
 gulp.task('generate:docs', ['exclude:news'], shell.task('eleventy --config=eleventy.js'));
 gulp.task('generate:news', ['exclude:docs'], shell.task('eleventy --config=eleventy.js'));
 
+
 /*
-  Setup with eleventy which directories it should exclude in from the generation
+  Tell eleventy which directories it should exclude from the generation
 */
 gulp.task('exclude:docs', shell.task('cp src/site/.eleventyignore.docs src/site/.eleventyignore'));
 gulp.task('exclude:news', shell.task('cp src/site/.eleventyignore.news src/site/.eleventyignore'));
 gulp.task('exclude:none', shell.task('echo "" > src/site/.eleventyignore'));
-
-
 
 
 /*
@@ -81,14 +69,12 @@ gulp.task('fetch:site', shell.task(`mkdir -p ${buildDest} && cp -R ${cache}/* ${
 gulp.task('purge', shell.task(`rm -rf ${cache}`)); //scary
 
 
-
 /*
   Watch src folder for changes
 */
 gulp.task("watch", function () {
   gulp.watch(buildSrc + "/**/*", ["build:site"])
 });
-
 
 
 /*
@@ -105,7 +91,7 @@ gulp.task('build:docs', function(callback) {
 
 
 /*
-  Build the docs section, put it in the cache, and populate a deploy from the cache
+  Build the news section, put it in the cache, and populate a deploy from the cache
 */
 gulp.task('build:news', function(callback) {
   runSequence(
@@ -118,7 +104,7 @@ gulp.task('build:news', function(callback) {
 
 
 /*
-  Build the docs section, put it in the cache, and populate a deploy from the cache
+  Build the entire site section, put it in a clean cache
 */
 gulp.task('build:site', function(callback) {
   runSequence(
@@ -130,9 +116,8 @@ gulp.task('build:site', function(callback) {
 });
 
 
-
 /*
-  Let's build this sucker. Mostly from the cached assets
+  Ge the site from the cache, and also compile the scss
 */
 gulp.task('build:cached', function(callback) {
   runSequence(
