@@ -1,20 +1,12 @@
 ---
 title: A news page
-date: 2018-03-21
+date: 2018-03-24
 ---
 
-## There's not much here in the sample news page. Better get to work.
+## No news today. (Wouldn't that be lovely!)
 
-The common front-matter data for all of the files in the posts section are abstracted into a `posts.json` file so that we don't need to repeat that on every file. Handy.
+This is a sample news page. News updates regularly so this section of the site is likely to need regenerating often. Luckily we can do that without also needing to regenerate other sections of the site, such as the [docs](/docs) section.
 
-It looks like this:
-
-```
-{
-  "layout" : "layouts/post.md",
-  "tags" : "post",
-  "templateEngineOverride": "njk,md"
-}
-```
+For information about how this works, or to try it for yourself by cloning this code repository and setting up your own test site in a few short clicks, take a look at the [about](/about) page.
 
 

@@ -22,7 +22,7 @@ html {
 
 body {
   text-align: center;
-  // background-color: $page-color;
+  background-color: $page-color;
   color: mix($text-color, $page-color, 70%);
   background: radial-gradient(ellipse at center, $page-color 70%, mix($page-color, $text-color, 70%) 150%);
   background-attachment: fixed;
@@ -31,6 +31,7 @@ body {
   font-weight: 30;
   font-size: 16px;
   line-height: 1.8;
+  padding-top: 1em;
 
   @include bp(mid) {
     font-size: 18px;
@@ -61,6 +62,7 @@ h1, h2, h3 {
 }
 h1 {
   margin-top:0.4em;
+  margin-bottom:0.5em;
   font-size: 4em;
   line-height: 0.9em;
 
@@ -74,7 +76,7 @@ h1 {
 
 
 p {
-  margin-bottom: 1em;
+  margin-bottom: 2em;
 }
 
 ul {
@@ -88,6 +90,14 @@ ul {
 
 li {
   margin-bottom: 0.6em;
+}
+
+.listing {
+  margin-top: 3em;
+
+  time {
+    font-size: 0.7em;
+  }
 }
 
 a:link,
@@ -145,9 +155,11 @@ a:focus {
 .meta {
   padding-top: 1em;
   padding-bottom: 1em;
-  font-size: 0.8em;
+  text-align: center;
+  font-size: 0.7em;
   font-style: italic;
-  color: mix($accent-color, $page-color, 60%);
+  color: mix($accent-color, $page-color, 70%);
+  background-color: mix($accent-color, $page-color, 10%);
 }
 
 pre {
@@ -161,6 +173,16 @@ pre {
   background-color: $page-color;
   border: solid 1px mix($accent-color, $page-color, 30%);
   overflow: auto;
+}
+
+code {
+  padding-top:0.2em;
+  padding-bottom:0.2em;
+  padding-left:0.4em;
+  padding-right:0.4em;
+  background-color: mix($text-color, $page-color, 10%);
+  color: mix($text-color, $page-color, 90%);
+  border-radius: 2px;
 }
 
 

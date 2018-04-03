@@ -5,7 +5,7 @@ layout: layouts/base.njk
 
 # Content shards
 
-An experiment to try sharding a site so that only we can cache all but the parts which need to be generated during a build and deploy.
+An experiment to try sharding a site so that we can cache all but the parts of the site which need to be generated during a given build and deploy.
 
 
 ## This site has three section

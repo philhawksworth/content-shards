@@ -1,11 +1,12 @@
 ---
-title: content shards - docs
+title: Content Shards - news
 layout: layouts/base.njk
+tags: []
 ---
 
-# news shard
+# News section
 
-The pages found in in the news section
+This section of the site collects together all the pages tagged with `news` thanks to the nice filtering mechanics provided by [Eleventy](https://11ty.io). It can be regenerated and deployed independently of the rest of the site.
 
 <ul class="listing">
 {%- for page in collections.news -%}
